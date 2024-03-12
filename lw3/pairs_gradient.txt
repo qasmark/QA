@@ -1,0 +1,7 @@
+Range: OneCells, ManyCells
+Gradient: Default, Custom
+Value: Number, Percentage, Percentile
+Color: None, Red, Blue, Green, Custom
+Tons: Lighter, Darker, None
+
+if [Color] in {"None"} then [Tons] = "None";

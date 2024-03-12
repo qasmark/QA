@@ -1,0 +1,16 @@
+Range: oneCell, manyCells	
+Format: Equal, EqualOrMore, EqualOrLess, More, Less, notEqual, between, notBetween, yourLogicExpression, date, dateBefore, dateAfter, containsData, notContainsData, textContains, textNotContains, textStartsWith, textEndsOn, textContainsPattern
+TypeCell: Default, date, Text, Number
+halfBord:	Yes, No
+Italic:		Yes, No
+Underline:	Yes, No
+Struck-out: Yes, No
+Color-text: None, Red, Blue, Green, Custom
+Color-cell: None, Red, Blue, Green, Custom
+Tons: Lighter, Darker, None
+
+if [Format] in {"Equal", "EqualOrMore", "EqualOrLess", "More", "Less", "notEqual", "between", "notBetween", "yourLogicExpression"} then [TypeCell] = "Number";
+if [Format] in {"date", "dateBefore", "dateAfter"} then [TypeCell] = "date";
+if [Format] in { "textContains", "textNotContains", "textStartsWith", "textEndsOn", "textContainsPattern"} then [TypeCell] = "Text";
+if [Format] in {"containsData", "notContainsData"} then [TypeCell] = "Default";	
+if [Color-cell] in {"None"} AND [Color-text] in {"None"} then [Tons] = "None";

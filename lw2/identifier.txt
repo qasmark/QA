@@ -1,0 +1,49 @@
+1. Идентификатор
+	Классы эквивалентности
+	
+		Длина идентификатора
+
+<идентификатор> ::= a|b|...|y|z|A|B|...|Y|Z|_ || a|b|...|y|z|A|B|...|Y|Z|_|-|1|2|3|...|8|9|0 {1, 127}| a|b|...|y|z|A|B|...|Y|Z|_  
+Максимально разрешенная длина - 128
+
+a, abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde (128),(0),
+Labcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde (129),
+LEabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde (130),
+abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcd (64)
+
+Идентификатор "a". Expected: true
+Идентификатор "abcdeabcdeabcdeabcdeabcdeabcdeabc
+			deabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeab
+			cdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabc". Expected: true
+-- len('abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde')
+Идентификатор "". Expected: abort
+Идентификатор "lenabcdeabcdeabcdeabcdeabcdeabcdea
+			bcdeabcdeabcdeabcdeabcdeabcdeabcdeabcd	
+			eabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde". Expected: abort
+Идентификатор "abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcd".
+		Expected: true
+		
+		Начало идентификатора
+		
+abc123, _abc145, _, ____, 1abc123, 1_____abc123, ,???
+
+Идентификатор "abc123". Expected: true
+Идентификатор "_abc145". Expected: true
+Идентификатор "_". Expected: true
+Идентификатор "____". Expected: true
+Идентификатор "1abc123". Expected: abort
+Идентификатор "1_____abc123". Expected: abort
+Идентификатор "???". Expected: abort
+Идентификатор " ". Expected: abort
+
+		Разрешенные символы в идентификаторе
+		
+qwertyuiopasdfghjklzxcvbnm, abcЩЫЧ, Я-РУССКИЙ, _, border-line--hadnler, border-line--hadnler123, border__line--123hadnlerЯЯЯ
+		
+Идентификатор "abcЩЫЧ". Expected: abort
+Идентификатор "qwertyuiopasdfghjklzxcvbnm". Expected: true
+Идентификатор "Я-РУССКИЙ". Expected: abort
+Идентификатор "_". Expected: true
+Идентификатор "border-line--hadnler". Expected: true
+Идентификатор "border-line--hadnler123". Expected: true
+Идентификатор "border__line--123hadnlerЯЯЯ". Expected: abort
