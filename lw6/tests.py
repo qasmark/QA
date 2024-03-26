@@ -25,6 +25,18 @@ class TestPaymentSystem(unittest.TestCase):
         self.assertTrue(result, "Payment failed despite sufficient funds")
         self.assertEqual(self.payment_system.balance, expected_balance, "Incorrect balance after successful payment")
 
+
+        
+    def test_make_payment_all_funds(self):
+        payment_amount = 95.238095
+        expected_balance = 0.0
+        
+        result = self.payment_system.make_payment(payment_amount)
+        
+        self.assertTrue(result, "Payment failed despite sufficient funds")
+        self.assertEqual(round(self.payment_system.balance, 2), expected_balance, "Incorrect balance after successful payment")
+
+
     def test_make_payment_insufficient_funds(self):
         payment_amount = 150
         expected_balance = 100
