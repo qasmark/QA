@@ -21,7 +21,11 @@ class PaymentSystem:
         self.balance += amount
 
     def set_commission_rate(self, rate):
-        self.commission_rate = rate
+        if rate <= 0:
+            self.status = "Negative commission"
+            rate = 0
+        else:
+            self.commission_rate = rate
 
     def get_status(self):
         return self.status
