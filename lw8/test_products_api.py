@@ -3,8 +3,6 @@ from products_api import ProductsApi
 import json
 import jsonschema # type: ignore
 import unittest
-# [TODO]
-# добавить проверкy значений Category, old_price, hit (только проверка на null)
 
 class TestProductsApi(unittest.TestCase):
     _CONFIG_DIR = path.join(path.dirname(path.realpath(__file__)), 'cfg')
